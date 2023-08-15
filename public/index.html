@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>songnomad</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: #5398BE;
+        color: #F0E1B4;
+      }
+      
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      
+      .square {
+        width: 270px;
+        height: 270px;
+        margin: 10px;
+        position: relative;
+        overflow-wrap: break-word;
+        overflow: hidden;
+      }
+      
+      .square:hover .overlay {
+        display: block;
+      }
+      
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 255, 0.5);
+        text-align: center;
+        color: white;
+      }
+      
+      .caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+      
+      .imgurl {
+        position: absolute;
+        top: 10px;
+        left: 20%;
+        transform: translateX(-12%);
+        font-size: 12px;
+        word-break: break-all;
+      }
+      
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+#popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#popup-content {
+  position: absolute;
+  margin-top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #8E6C88;
+  width: 60%;
+  padding-top: 50px;
+  padding-bottom: 70px;
+  text-align: center;
+}
+
+#email-form input[type="email"] {
+  background-color: #F0E1B4;
+  outline: none;
+  padding: 10px;
+}
+
+#email-form input[type="email"]:hover {
+  background-color: #F0E1B4;
+  outline: none;
+  padding: 10px;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <h4 style="user-select: none; margin-bottom: 5px;">click an image to hear a song with its vibe&nbsp;&nbsp;|&nbsp;&nbsp;<a id="randomize-button" style="color: #F2CD5D; text-decoration: none; cursor: pointer;"><i class="fa-solid fa-shuffle">&nbsp;</i> shuffle</a></h4>
+    <i><a id="numClicked" style="color: white; user-select: none; margin-top: 5px; margin-bottom: 10px;"></a></i>
+    <div class="grid" style="margin-top: 10px">
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels...">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+      <div class="square">
+        <a target="_blank" class="link" href="#">
+          <img class="image" src="" alt="harvesting pixels">
+          <div class="overlay">
+            <div class="caption"></div>
+            <div class="imgurl"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+<div id="popup-container">
+  <div id="popup-content">
+    <h2>get notified when songnomad launches&nbsp;&nbsp;<i class="fa-solid fa-paper-plane"></i></h2>
+    <p>we'll send you a one-time email when the full version comes out</p><br>
+    <form id="email-form">
+      <label for="email-input"><b>Email:</b>&nbsp;</label>
+      <input type="email" id="email-input" name="email" required><br>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      
+            var tableRows = [];
+            fetch('/update').then(response => response.json()).then(data => {
+                tableRows = data;
+                updateGrid();
+    // Do something with the data
+            });
+        
+            let numClicked = parseInt(getCookie("numClicked"));
+            msg = "";
+            if(numClicked < 10) {
+               msg = "lv 1 - " + (10 - numClicked) + " shuffles until ascension";
+            } else if (numClicked < 40) {
+               msg = "lv 2 - " + (40 - numClicked) + " shuffles until ascension";
+            } else if (numClicked < 100) {
+               msg = "lv 3 - " + (100 - numClicked) + " shuffles until ascension";
+            } else if (numClicked < 300) {
+               msg = "lv 4 - " + (300 - numClicked) + " shuffles until ascension";
+            } else if (numClicked >= 300) {
+                msg = "lv 5";
+            } else {
+            
+                msg = "lv 1 - 10 shuffles until ascension"
+            }
+            document.querySelector("#numClicked").textContent = msg;
+        
+        // Update grid with random rows
+        function updateGrid() {
+          for (var i = 0; i < 8; i++) {
+            var square = $('.square').eq(i);
+            square.find('.image').attr('src', tableRows[i].imgurl);
+            square.find('.link').attr('href', tableRows[i].songurl);
+            square.find('.caption').text('Click to hear me!');
+            square.find('.imgurl').text('Original Image: ' + tableRows[i].imgurl);
+          }
+        }
+        
+        // Replace all images with new random rows when button is clicked
+        
+const popupContainer = document.getElementById("popup-container");
+const emailForm = document.getElementById("email-form");
+
+// function to show the popup
+function showPopup() {
+  popupContainer.style.display = "block";
+}
+
+// function to hide the popup
+function hidePopup() {
+  popupContainer.style.display = "none";
+}
+        
+        
+        $('#randomize-button').click(function() {
+          tableRows = [];
+          fetch('/update').then(response => response.json()).then(data => {
+                tableRows = data;
+                updateGrid();
+    // Do something with the data
+            });
+            numClicked++;
+            setCookie("numClicked", numClicked, 365);
+            msg = "";
+            
+            if (numClicked == 10) {
+  showPopup();
+}
+            
+            if(numClicked < 10) {
+               msg = "lv 1 - " + (10 - numClicked) + " shuffles until ascension";
+            } else if (numClicked < 40) {
+               msg = "lv 2 - " + (40 - numClicked) + " shuffles until ascension";
+            } else if (numClicked < 100) {
+               msg = "lv 3 - " + (100 - numClicked) + " shuffles until ascension";
+            } else if (numClicked < 300) {
+               msg = "lv 4 - " + (300 - numClicked) + " shuffles until ascension";
+            } else if (numClicked >= 300) {
+                msg = "lv 5";
+            } else {
+            
+                msg = "lv 1 - 10 shuffles until ascension"
+            }
+            document.querySelector("#numClicked").textContent = msg;
+
+            // Display the number of images clicked to the user
+      });
+      
+document.querySelector("#email-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const data = {
+    email: event.target.email.value
+  }
+  try {
+  fetch('/email', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+})
+    .then(response => response.json()).then(data => {
+                hidePopup();
+    // Do something with the data
+            });
+  } catch (error) {
+    console.error(error);
+    console.log("An error occurred. Please try again later.");
+  }
+});
+
+//let numClicked = parseInt(getCookie("numClicked"));
+
+// If the cookie doesn't exist, set the number of images clicked to 0
+if (isNaN(numClicked)) {
+  numClicked = 0;
+}
+
+
+function getCookie(name) {
+  let cookies = document.cookie.split("; ");
+  for (let i = 0; i < cookies.length; i++) {
+    let parts = cookies[i].split("=");
+    if (parts[0] === name) {
+      return decodeURIComponent(parts[1]);
+    }
+  }
+  return null;
+}
+
+// Helper function to set a cookie
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    let date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+}
+    </script>
+  </body>
+</html>
